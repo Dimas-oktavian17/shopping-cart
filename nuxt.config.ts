@@ -9,5 +9,9 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxt/image',
     '@pinia/nuxt'
-  ]
+  ],
+  typescript: {
+    typeCheck: true,
+    strict: true
+  }
 })

@@ -21,6 +21,8 @@
   },
   "devDependencies": {
     "@nuxtjs/color-mode": "^3.4.1",
-    "nuxt-icon": "^0.6.10"
+    "nuxt-icon": "^0.6.10",
+    "typescript": "^5.4.5",
+    "vue-tsc": "^1"
   }
 }
