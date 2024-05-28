@@ -1,12 +1,7 @@
 <script setup lang="ts">
-const website = useWebsiteStore()
-
-await callOnce(website.fetch)
+const { data } = await useFetch('/api/product')
 </script>
 
 <template>
-    <main>
-        <h1>{{ website.name }}</h1>
-        <p>{{ website.description }}</p>
-    </main>
+    <pre>{{ data }}</pre>
 </template>

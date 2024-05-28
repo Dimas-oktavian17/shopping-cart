@@ -1,18 +1,23 @@
-export const useWebsiteStore = defineStore('websiteStore', {
-    // state: () => ({
-    //     name: '',
-    //     description: ''
-    // }),
-    const name = ref('testing')
-    // actions: {
-    //     async fetch() {
-    //         const infos = await $fetch('https://api.nuxt.com/modules/pinia')
-
-    //         this.name = infos
-    //         this.description = infos
-    //     }
+export const useCounterStore = defineStore('counter', () => {
+    const product = ref([
+        {
+            id: 1,
+            name: 'Oreo',
+            price: 1000,
+            stok: 3
+        },
+        {
+            id: 2,
+            name: 'Oreo',
+            price: 1000,
+            stok: 1
+        },
+    ])
+    const name = ref('Eduardo')
+    // const doubleCount = computed(() => count.value * 2)
+    // function increment() {
+    //     count.value++
     // }
-    return{
-        name
-    }
+
+    return { name, product }
 })
