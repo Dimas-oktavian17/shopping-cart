@@ -1,22 +1,12 @@
 <script setup lang="ts">
-const { data } = await useFetch('/api/product')
+const { data } = await useFetch('/api/product');
+const products = ref(data.value);
 </script>
 
 <template>
-    <!-- <pre>{{ data }}</pre> -->
-    <ul>
-        <li v-for="({
-            id,
-            logo,
-            title,
-            deskripsi,
-            price,
-            stok,
-            checkout,
-            status,
-        }) in data" :key="id">
-            {{ title }}
-        </li>
-    </ul>
-    <ProductCard></ProductCard>
+    <div>
+        <div v-for="product in products" :key="product.id">
+            <ProductCard :data="product" />
+        </div>
+    </div>
 </template>

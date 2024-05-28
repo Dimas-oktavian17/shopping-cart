@@ -4,7 +4,6 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
     '@nuxtjs/color-mode',
-    '@nuxtjs/tailwindcss',
     'nuxt-icon',
     '@vueuse/nuxt',
     '@nuxt/image',
@@ -13,5 +12,12 @@ export default defineNuxtConfig({
   typescript: {
     typeCheck: true,
     strict: true
-  }
+  },
+  css: ['~/assets/css/main.css'],
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
 })
