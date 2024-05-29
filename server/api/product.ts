@@ -13,7 +13,7 @@ export default defineEventHandler((event) => {
         {
             "id": 2,
             "logo": "fluent-emoji-high-contrast:cut-of-meat",
-            "title": "Daging Wagyu A5",
+            "title": "Daging Wagyu",
             "deskripsi": "Jangan banyak-banyak, udah pasti enak. Sebaiknya jangan gegabah.",
             "price": 10000,
             "stok": 80,
@@ -24,7 +24,7 @@ export default defineEventHandler((event) => {
             "id": 3,
             "logo": "bxs:coffee-bean",
             "title": "Kopikap",
-            "deskripsi": "Dari biji kopi pilihan, dan cita rasa yang berkualitas. Meskipun kadang basi, pengalaman.",
+            "deskripsi": "Dari biji kopi pilihan, dan cita rasa yang berkualitas.",
             "price": 1500,
             "stok": 3,
             "checkout": "Add to cart",

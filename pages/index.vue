@@ -4,8 +4,8 @@ const products = ref(data.value);
 </script>
 
 <template>
-    <div>
-        <div v-for="product in products" :key="product.id">
+    <div class="flex flex-row">
+        <div class="" v-for="product in products" :key="product.id">
             <ProductCard :data="product" />
         </div>
     </div>

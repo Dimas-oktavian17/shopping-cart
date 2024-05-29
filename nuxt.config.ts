@@ -9,6 +9,9 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@pinia/nuxt'
   ],
+  colorMode: {
+    classSuffix: "",
+  },
   typescript: {
     typeCheck: true,
     strict: true
