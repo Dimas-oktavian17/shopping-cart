@@ -14,7 +14,7 @@ export default defineEventHandler((event) => {
             "id": 2,
             "logo": "fluent-emoji-high-contrast:cut-of-meat",
             "title": "Daging Wagyu",
-            "deskripsi": "Jangan banyak-banyak, udah pasti enak. Sebaiknya jangan gegabah.",
+            "deskripsi": "Jangan banyak-banyak, udah pasti enak sekali bro.",
             "price": 10000,
             "stok": 80,
             "checkout": "Add to cart",

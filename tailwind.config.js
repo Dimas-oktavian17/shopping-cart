@@ -10,7 +10,13 @@ module.exports = {
     "./error.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'primary-bulleted': '#2940D3',
+        'secondary-text': '#94A4C4',
+        'secondary-second': '#82868C'
+      },
+    },
     fontFamily: {
       'body': ["Inter", "sans-serif"],
     },
