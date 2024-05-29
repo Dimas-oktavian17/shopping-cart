@@ -5,21 +5,22 @@ const props = defineProps({
         required: true
     }
 });
-const { data:
-    { id,
+const { data
+    {
+    id,
         logo,
         title,
         deskripsi,
         price,
         stok,
         checkout,
-        status }
-} = props
+        status
+}} = props
 </script>
 <template>
     <div class="max-w-xs bg-white rounded-lg shadow dark:bg-gray-800">
         <div class="flex flex-col items-center bg-[#F5F5F7] dark:bg-gray-600 rounded-t-lg py-8">
-            <Icon :name="logo" class="w-12 h-auto  text-gray-800 dark:text-white" />
+            <Icon :name="logo" class="w-12 h-auto text-gray-800 dark:text-white" />
         </div>
         <div class="p-5">
             <div class="flex flex-row items-center justify-between">
@@ -49,4 +50,4 @@ const { data:
             </div>
         </div>
     </div>
-</template>
+</template
