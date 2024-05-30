@@ -1,10 +1,10 @@
 <script setup>
 defineEmits(['actions'])
-defineProps(['title', 'class'])
+defineProps(['title', 'class', 'disabled'])
 </script>
 <template>
 
-    <button @click="$emit('actions')" :class="class">
+    <button :disabled="disabled" @click="$emit('actions')" :class="class">
         {{ title }}
         <slot />
     </button>
