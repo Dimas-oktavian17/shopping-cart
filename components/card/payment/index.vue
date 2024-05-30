@@ -1,7 +1,6 @@
 <template>
     <!-- Container Order Summery Card -->
-    <div class="container flex flex-wrap justify-center gap-5 py-6 mx-auto mt-6 sm:justify-evenly">
-
+    <div class="container flex flex-wrap justify-center w-[40%] gap-5 py-6 mx-auto mt-9 sm:justify-evenly">
         <!-- Order Summery Card -->
         <div class="bg-gray-200 rounded-lg shadow-lg w-80 h-max">
             <div class="p-5 bg-white rounded-t-lg part1">

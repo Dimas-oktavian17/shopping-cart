@@ -5,9 +5,9 @@ const props = defineProps({
         required: true
     }
 });
-const { data
+const { data:
     {
-    id,
+        id,
         logo,
         title,
         deskripsi,
@@ -15,7 +15,7 @@ const { data
         stok,
         checkout,
         status
-}} = props
+    } } = props
 </script>
 <template>
     <div class="max-w-xs bg-white rounded-lg shadow dark:bg-gray-800">
