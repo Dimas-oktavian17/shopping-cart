@@ -2,6 +2,7 @@
 function mode(theme: string) {
     useColorMode().preference = theme;
 }
+const useProductStores = useProductStore()
 </script>
 <template>
     <nav class="bg-transparent dark:bg-gray-800">
@@ -45,7 +46,7 @@ function mode(theme: string) {
                             <Icon name="bi:cart" class="w-6 h-6 text-gray-800 dark:text-white" />
                             <span
                                 class="absolute inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full -right-3 -top-2">
-                                1
+                                {{ useProductStores.CartProducts.length }}
                             </span>
                         </NuxtLink>
                     </li>
