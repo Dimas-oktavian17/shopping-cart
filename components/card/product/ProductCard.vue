@@ -19,9 +19,6 @@ const HandleProduct = (title, stok, price) => useProductStores.HandleProducts(ti
                 <h5 class="w-full mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">
                     {{ result.title }}
                 </h5>
-                <!-- <h5 class="w-1/2 mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">
-                    {{ stok }}
-                </h5> -->
             </div>
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
                 {{ result.deskripsi }}
@@ -29,7 +26,13 @@ const HandleProduct = (title, stok, price) => useProductStores.HandleProducts(ti
             <div class="flex flex-row items-center justify-between">
                 <div class="flex flex-col items-start w-1/2">
                     <h5 class="text-lg font-bold tracking-tight text-gray-900 dark:text-white">
-                        Rp.{{ result.price }} {{ result.status }}
+                        Rp.{{ result.price }}
+                        <span class="text-sm text-green-300" v-if="result.status">
+                            Available
+                        </span>
+                        <span class="text-sm text-red-400" v-else-if="!result.status">
+                            Not available
+                        </span>
                     </h5>
                 </div>
                 <!-- btn -->
