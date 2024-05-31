@@ -1,9 +1,21 @@
 export const useProductStore = defineStore('products', () => {
     // ? State
     const products = ref()
-    const cart = ref<object[]>([])
+    const cart = ref<any[]>([])
     // ? getters
     const ProdutsData = computed(() => products.value)
+    const CartProducts = computed(() => {
+        return cart.value.reduce((a: any, b: any) => {
+            const FindProduct: any = a.find((i: any) => i.nama === b.nama)
+            if (FindProduct) {
+                FindProduct.harga += b.harga
+                FindProduct.jumlah += b.jumlah
+            } else {
+                a.push({ ...b })
+            }
+            return a
+        }, [])
+    })
     // ? actions
     const fetch = async () => {
         const { data } = await useFetch('/api/product')
@@ -19,12 +31,12 @@ export const useProductStore = defineStore('products', () => {
                 jumlah: Number(1)
             })
             ProductMenu.stok === 0 || ProductMenu.stok < 0 ? ProductMenu.status = false : ProductMenu.status = true
-            console.log(ProductMenu.status);
         }
     }
     // ? return data
     return {
         ProdutsData,
+        CartProducts,
         fetch,
         HandleProducts,
         products,
