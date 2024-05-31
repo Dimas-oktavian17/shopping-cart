@@ -16,7 +16,10 @@ export const useProductStore = defineStore('products', () => {
             return a
         }, [])
     })
-    // ? actions
+    const TotalCart = computed(() => {
+        return CartProducts.value.reduce((a: any, b: any) => a + b.harga, 0)
+    })
+    // ? actions 
     const fetch = async () => {
         const { data } = await useFetch('/api/product')
         products.value = data.value
@@ -37,6 +40,7 @@ export const useProductStore = defineStore('products', () => {
     return {
         ProdutsData,
         CartProducts,
+        TotalCart,
         fetch,
         HandleProducts,
         products,
