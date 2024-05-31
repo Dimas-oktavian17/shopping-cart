@@ -1,8 +1,12 @@
 <script setup>
+const useProductStores = useProductStore()
+const { CartProducts } = storeToRefs(useProductStores)
 </script>
 <template>
-    <section class="w-[60%] flex flex-col items-start">
+    <section class="flex flex-col items-start w-full">
         <Breadcrumb title="Uko Ecommerce" />
-        <card-cart></card-cart>
+        <div v-for="product in CartProducts" :key="product.id">
+            <card-cart :data="product"></card-cart>
+        </div>
     </section>
 </template>
