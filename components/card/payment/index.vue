@@ -1,3 +1,7 @@
+<script setup>
+const useProductStores = useProductStore()
+const { TotalCart } = storeToRefs(useProductStores)
+</script>
 <template>
     <!-- Container Order Summery Card -->
     <div class="container flex flex-wrap justify-center w-[40%] gap-5 py-6 mx-auto mt-9 sm:justify-evenly">
@@ -6,21 +10,20 @@
             <div class="p-5 bg-white rounded-t-lg part1">
                 <h1 class="text-sm font-medium name">Order Summery</h1>
                 <div class="mt-6 text-xs order">
-                    <p class="float-right font-medium">$215</p>
+                    <p class="float-right font-medium">Rp.{{ TotalCart }}</p>
                     <h2 class="mb-3 font-medium">Subtotal</h2>
 
-                    <p class="float-right font-medium">15%</p>
-                    <h2 class="mb-3 font-medium">Discount</h2>
+                    <p class="float-right font-medium"></p>
+                    <h2 class="mb-3 font-medium"></h2>
 
-                    <p class="float-right font-medium">$50</p>
-                    <h2 class="mb-3 font-medium">Shipping cost</h2>
+                    <p class="float-right font-medium"></p>
+                    <h2 class="mb-3 font-medium"></h2>
                 </div>
             </div>
 
             <div class="px-5 pt-3 mt-px bg-white rounded-b-lg max-width">
-                <p class="float-right font-medium text-blue-400">$285</p>
+                <p class="float-right font-medium text-blue-400">Rp.{{ TotalCart }}</p>
                 <h2 class="text-sm font-medium">Total</h2>
-
                 <div class="flex justify-center py-2 mt-8 bg-blue-700 rounded max-width">
                     <button type="submit" class="text-xs text-white">Proceed to payment</button>
                 </div>
