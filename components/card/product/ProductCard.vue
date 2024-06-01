@@ -7,7 +7,7 @@ const props = defineProps({
     }
 });
 const result = computed(() => props.data)
-const HandleProduct = (title, stok, price) => useProductStores.HandleProducts(title, stok, price)
+const HandleProduct = (title, stok, price, logo, status) => useProductStores.HandleProducts(title, stok, price, logo, status)
 </script>
 <template>
     <div class="max-w-xs bg-white rounded-lg shadow dark:bg-gray-800">
@@ -27,7 +27,7 @@ const HandleProduct = (title, stok, price) => useProductStores.HandleProducts(ti
                 <div class="flex flex-col items-start w-1/2">
                     <h5 class="text-lg font-bold tracking-tight text-gray-900 dark:text-white">
                         Rp.{{ result.price }}
-                        <span class="text-sm text-green-300" v-if="result.status">
+                        <span class="text-sm text-green-800 dark:text-green-300" v-if="result.status">
                             Available
                         </span>
                         <span class="text-sm text-red-400" v-else-if="!result.status">
@@ -38,7 +38,7 @@ const HandleProduct = (title, stok, price) => useProductStores.HandleProducts(ti
                 <!-- btn -->
                 <div class="flex flex-col items-start w-1/2 ">
                     <BaseButton :disabled="!result.status"
-                        @actions="HandleProduct(result.title, result.stok, result.price)"
+                        @actions="HandleProduct(result.title, result.stok, result.price, result.logo, result.status)"
                         class="p-3 rounded-full bg-[#2940D3] flex flex-col items-center justify-center">
                         <Icon name="ph:plus" class="w-4 h-4 text-white" />
                     </BaseButton>
