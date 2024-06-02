@@ -26,7 +26,7 @@ const img = useImage()
                     </figure>
                     <article class="flex flex-col items-start pl-8">
                         <h1 class="text-lg font-semibold text-primary-title">{{ nama }}</h1>
-                        <h3 class="text-lg font-semibold text-primary-title">{{ harga }}</h3>
+                        <h3 class="text-lg font-semibold text-primary-title">{{ formatNumber(harga) }}</h3>
                         <p class="text-sm font-semibold text-secondary-text">
                             In Stock
                         </p>

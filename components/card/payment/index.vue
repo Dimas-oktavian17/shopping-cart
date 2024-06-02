@@ -11,7 +11,7 @@ const img = useImage()
             <div class="p-5 bg-white rounded-t-lg part1">
                 <h1 class="text-sm font-semibold name text-primary-payment">Order Summery</h1>
                 <div class="mt-6 text-xs order">
-                    <p class="float-right font-semibold text-primary-payment">Rp.{{ TotalCart }}</p>
+                    <p class="float-right font-semibold text-primary-payment">{{ formatNumber(TotalCart) }} </p>
                     <h2 class="mb-3 font-semibold text-primary-title">Subtotal</h2>
 
                     <p class="float-right font-semibold"></p>
@@ -23,7 +23,7 @@ const img = useImage()
             </div>
 
             <div class="px-5 pt-3 mt-px bg-white rounded-b-lg">
-                <p class="float-right font-semibold text-secondary-billing">Rp.{{ TotalCart }}</p>
+                <p class="float-right font-semibold text-secondary-billing">{{ formatNumber(TotalCart) }}</p>
                 <h2 class="text-sm font-semibold text-primary-payment">Total</h2>
                 <div class="flex justify-center mt-8">
                     <button type="submit"
