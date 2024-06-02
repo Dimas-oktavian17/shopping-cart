@@ -25,6 +25,10 @@ export const useProductStore = defineStore('products', () => {
         const { data } = await useFetch('/api/product')
         products.value = data.value
     }
+    const DisableProduct = (ProductMenu: product, CartMenu: CartType) => {
+        ProductMenu.stok === 0 || ProductMenu.stok < 0 ? ProductMenu.status = false : ProductMenu.status = true
+        ProductMenu.stok === 0 || ProductMenu.stok < 0 ? CartMenu.statusCart = false : CartMenu.statusCart = true
+    }
     const HandleProducts = (title: string, stok: number, price: number, logo: string, status: boolean) => {
         const ProductMenu = ProdutsData.value.find((item: product) => item.title === title)
         const CartMenuIndex = cart.value.findIndex((item) => item.nama === title)
@@ -38,8 +42,8 @@ export const useProductStore = defineStore('products', () => {
                 logoIcon: logo,
                 statusCart: status
             })
-            ProductMenu.stok === 0 || ProductMenu.stok < 0 ? ProductMenu.status = false : ProductMenu.status = true
-            ProductMenu.stok === 0 || ProductMenu.stok < 0 ? CartMenu.statusCart = false : CartMenu.statusCart = true
+            // ? Disabled buttons if stok is null
+            DisableProduct(ProductMenu, CartMenu)
         }
     }
     const HandleProductsCarts = (nama: string, jumlah: number, harga: number, statusCart: boolean) => {
@@ -59,9 +63,11 @@ export const useProductStore = defineStore('products', () => {
             // }
             // ? if the quantity null will be removed from cart
             // CartMenu.statusCart = ProductMenu.status
-            ProductMenu.stok === 0 || ProductMenu.stok < 0 ? ProductMenu.status = false : ProductMenu.status = true
-            ProductMenu.stok === 0 || ProductMenu.stok < 0 ? CartMenu.statusCart = false : CartMenu.statusCart = true
+            // ProductMenu.stok === 0 || ProductMenu.stok < 0 ? ProductMenu.status = false : ProductMenu.status = true
+            // ProductMenu.stok === 0 || ProductMenu.stok < 0 ? CartMenu.statusCart = false : CartMenu.statusCart = true
             // ProductMenu.stok === 0 ?  : 
+            // ? Disabled buttons if stok is null
+            DisableProduct(ProductMenu, CartMenu)
         } else {
             console.error('product not found');
         }
@@ -71,15 +77,17 @@ export const useProductStore = defineStore('products', () => {
         const ProductMenu = products.value.find((item: product) => item.title === nama)
         if (CartMenuIndex !== -1 && ProductMenu) {
             // ? Get the product from the cart  
-            const productMenu = cart.value[CartMenuIndex]
+            const CartMenu = cart.value[CartMenuIndex]
             // Decrease the quantity, price and add stok in home menu
-            productMenu.jumlah -= 1
+            CartMenu.jumlah -= 1
             ProductMenu.stok += 1
-            productMenu.harga -= ProductMenu.price
+            CartMenu.harga -= ProductMenu.price
             // ? if the quantity null will be removed from cart 
-            productMenu.jumlah === 0 && cart.value.splice(CartMenuIndex, 1)
-            ProductMenu.stok === 0 || ProductMenu.stok < 0 ? ProductMenu.status = false : ProductMenu.status = true
-            ProductMenu.stok === 0 || ProductMenu.stok < 0 ? productMenu.statusCart = false : productMenu.statusCart = true
+            CartMenu.jumlah === 0 && cart.value.splice(CartMenuIndex, 1)
+            // ? Disabled buttons if stok is null
+            DisableProduct(ProductMenu, CartMenu)
+            // ProductMenu.stok === 0 || ProductMenu.stok < 0 ? ProductMenu.status = false : ProductMenu.status = true
+            // ProductMenu.stok === 0 || ProductMenu.stok < 0 ? CartMenu.statusCart = false : CartMenu.statusCart = true
             // productMenu.statusCart = ProductMenu.status
         } else {
             console.error('product not found');
@@ -95,6 +103,7 @@ export const useProductStore = defineStore('products', () => {
         fetch,
         HandleProducts,
         HandleProductsCarts,
-        HandleDeleteProducts
+        HandleDeleteProducts,
+        DisableProduct
     }
 })
