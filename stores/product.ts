@@ -30,7 +30,7 @@ export const useProductStore = defineStore('products', () => {
         ProductMenu.stok === 0 || ProductMenu.stok < 0 ? CartMenu.statusCart = false : CartMenu.statusCart = true
     }
     const HandleProducts = (title: string, stok: number, price: number, logo: string, status: boolean) => {
-        const ProductMenu = ProdutsData.value.find((item: product) => item.title === title)
+        const ProductMenu = products.value.find((item: product) => item.title === title)
         const CartMenuIndex = cart.value.findIndex((item) => item.nama === title)
         const CartMenu = cart.value[CartMenuIndex]
         if (stok > 0) {
@@ -52,20 +52,14 @@ export const useProductStore = defineStore('products', () => {
         if (CartMenuIndex !== -1 && ProductMenu.status && ProductMenu) {
             // ? Get the product from the cart  
             const CartMenu = cart.value[CartMenuIndex]
-            // if (ProductMenu.status === false) {
-            //     CartMenu.statusCart = false
-            // } else {
             // Decrease the quantity, price and add stok in home menu
             CartMenu.jumlah += 1
             ProductMenu.stok -= 1
             CartMenu.harga += ProductMenu.price
             CartMenu.statusCart = true
-            // }
+
             // ? if the quantity null will be removed from cart
-            // CartMenu.statusCart = ProductMenu.status
-            // ProductMenu.stok === 0 || ProductMenu.stok < 0 ? ProductMenu.status = false : ProductMenu.status = true
-            // ProductMenu.stok === 0 || ProductMenu.stok < 0 ? CartMenu.statusCart = false : CartMenu.statusCart = true
-            // ProductMenu.stok === 0 ?  : 
+
             // ? Disabled buttons if stok is null
             DisableProduct(ProductMenu, CartMenu)
         } else {
@@ -86,9 +80,6 @@ export const useProductStore = defineStore('products', () => {
             CartMenu.jumlah === 0 && cart.value.splice(CartMenuIndex, 1)
             // ? Disabled buttons if stok is null
             DisableProduct(ProductMenu, CartMenu)
-            // ProductMenu.stok === 0 || ProductMenu.stok < 0 ? ProductMenu.status = false : ProductMenu.status = true
-            // ProductMenu.stok === 0 || ProductMenu.stok < 0 ? CartMenu.statusCart = false : CartMenu.statusCart = true
-            // productMenu.statusCart = ProductMenu.status
         } else {
             console.error('product not found');
         }
@@ -104,6 +95,6 @@ export const useProductStore = defineStore('products', () => {
         HandleProducts,
         HandleProductsCarts,
         HandleDeleteProducts,
-        DisableProduct
+        DisableProduct,
     }
 })
