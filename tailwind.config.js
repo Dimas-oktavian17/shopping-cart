@@ -13,6 +13,7 @@ module.exports = {
     extend: {
       colors: {
         'primary-payment': '#283252',
+        'primary-sort': '#2940D3',
         'primary-title': '#3A3C40',
         'primary-bulleted': '#2940D3',
         'secondary-text': '#94A4C4',

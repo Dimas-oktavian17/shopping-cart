@@ -26,7 +26,7 @@ const HandleProduct = (title, stok, price, logo, status) => useProductStores.Han
             <div class="flex flex-row items-center justify-between">
                 <div class="flex flex-col items-start w-1/2">
                     <h5 class="text-lg font-bold tracking-tight text-gray-900 dark:text-white">
-                        Rp.{{ result.price }}
+                        {{ formatNumber(result.price) }}
                         <span class="text-sm text-green-800 dark:text-green-300" v-if="result.status">
                             Available
                         </span>
