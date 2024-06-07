@@ -1,12 +1,14 @@
 // stores/product.ts
 import type { CartType, product } from '@/types/productType';
-
+import { useFilterStore } from '@/stores/FilterProduct'
 export const useProductStore = defineStore('products', () => {
     // ? State
     const products = ref()
+    const cari = ref('');
     const cart = ref<CartType[]>([])
+    const search: any = useFilterStore().SearchFilter
     // ? getters
-    const ProdutsData = computed(() => products.value)
+    const ProdutsData = computed(() => products.value.filter((item: any) => item.title.toLowerCase().includes(cari.value.toLowerCase())))
     const CartProducts = computed(() => {
         return cart.value.reduce((a: any, b: CartType) => {
             const FindProduct = a.find((i: CartType) => i.nama === b.nama)
@@ -96,5 +98,7 @@ export const useProductStore = defineStore('products', () => {
         HandleProductsCarts,
         HandleDeleteProducts,
         DisableProduct,
+        search,
+        cari
     }
 })
