@@ -1,5 +1,5 @@
 <script setup>
-const emit = defineEmits(['SearchProduct'])
+const emit = defineEmits(['update:modelValue'])
 const props = defineProps(
     {
         types: {
@@ -9,9 +9,14 @@ const props = defineProps(
         title: {
             type: String,
             required: true
-        }
+        },
+       modelValue: {
+            type: String,
+            required: true
+        },
+
     })
-const SearchProducts = (e) => emit('SearchProduct', e.target.value)
+const SearchProducts = (e) => emit('update:modelValue', e.target.value)
 </script>
 <template>
     <header class="max-w-md mx-auto mb-4">
@@ -24,7 +29,7 @@ const SearchProducts = (e) => emit('SearchProduct', e.target.value)
             </div>
             <input @input="SearchProducts" :type="types" :id="title"
                 class="block w-full p-3 text-sm text-gray-900 rounded-lg placeholder:pl-4 ps-10 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-                placeholder="Search products..." required />
+                placeholder="Search products..." :value="modelValue"  required />
         </div>
     </header>
 </template>
