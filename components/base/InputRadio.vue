@@ -1,6 +1,7 @@
 <script setup>
 const useFilterStores = useFilterStore()
 const { RadioFilter } = storeToRefs(useFilterStores)
+watchEffect(()=> console.log(RadioFilter.value))
 </script>
 <template>
     <div class="flex items-center mb-4 ml-3">

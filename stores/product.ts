@@ -1,12 +1,44 @@
 // stores/product.ts
 import type { CartType, product } from '@/types/productType';
-
+import { useFilterStore } from '@/stores/FilterProduct'
 export const useProductStore = defineStore('products', () => {
     // ? State
     const products = ref()
     const cart = ref<CartType[]>([])
     // ? getters
-    const ProdutsData = computed(() => products.value)
+    const search: any = computed(() => useFilterStore().SearchFilter)
+    const RadioFilter: any = computed(() => useFilterStore().RadioFilter)
+    const ProdutsData = computed(() => {
+        // First, filter the products based on the search input
+        let filteredProducts = products.value.filter((item: any) => item.title.toLowerCase().includes(search.value.toLowerCase()));
+        // Then, sort the filtered products based on the radio input
+        if (RadioFilter.value !== 'all') {
+            filteredProducts.sort((a: any, b: any) => {
+                return RadioFilter.value === 'descending' ? b.price - a.price
+                    : a.price - b.price
+            });
+        }
+        return filteredProducts;
+    });
+
+    // const ProdutsData = computed(() => {
+    //     let data = products.value.filter((item: any) => {
+    //         const SearchFilter = item.title.toLowerCase().includes(search.value.toLowerCase())
+    //         return SearchFilter
+    //     })
+
+    //     if (RadioFilter.value !== 'all') {
+    //         data.sort((a: any, b: any) => {
+    //             if (RadioFilter.value === 'descending') {
+    //                 b.price - a.price
+    //             } else {
+    //                 a.price - b.price
+    //             }
+    //         })
+    //     }
+    //     return data
+    // })
+
     const CartProducts = computed(() => {
         return cart.value.reduce((a: any, b: CartType) => {
             const FindProduct = a.find((i: CartType) => i.nama === b.nama)
@@ -96,5 +128,7 @@ export const useProductStore = defineStore('products', () => {
         HandleProductsCarts,
         HandleDeleteProducts,
         DisableProduct,
+        search,
+        RadioFilter,
     }
 })
