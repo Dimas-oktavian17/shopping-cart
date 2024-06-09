@@ -33,10 +33,10 @@ const useProductStores = useProductStore()
                                 <Icon name="ph:moon-fill"
                                     class="block transition-all group-hover:rotate-12 dark:text-white" />
                             </span>
-                            <span v-else-if="$colorMode.preference === 'dark' && 'dark'">
+                            <span>
                                 <!-- sun -->
                                 <Icon name="ph:sun-fill"
-                                    class="block text-white transition-all group-hover:rotate-12" />
+                                    class="block text-white transition-all dark:hidden group-hover:rotate-12" />
                             </span>
                         </button>
                     </li>
