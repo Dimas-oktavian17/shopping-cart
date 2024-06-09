@@ -2,8 +2,7 @@
 const useProductStores = useProductStore()
 const useFilterStores = useFilterStore()
 await callOnce(useProductStores.fetch)
-const { ProdutsData, cari } = storeToRefs(useProductStores)
-const { FilterProduct } = storeToRefs(useFilterStores)
+const { ProdutsData } = storeToRefs(useProductStores);
 </script>
 <template>
     <section class="w-[70%]">

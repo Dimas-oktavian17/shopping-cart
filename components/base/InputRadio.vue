@@ -1,12 +1,11 @@
 <script setup>
 const useFilterStores = useFilterStore()
 const { RadioFilter } = storeToRefs(useFilterStores)
-watchEffect(()=> console.log(RadioFilter.value))
 </script>
 <template>
     <div class="flex items-center mb-4 ml-3">
         <input v-model="RadioFilter" checked id="default-radio-1" type="radio" value="all" name="default-radio"
-            class="w-4 h-4 bg-red-500">
+            class="w-4 h-4">
         <label for="default-radio-1"
             class="text-sm font-medium text-primary-title checked:text-secondary-billing ms-2">Default
         </label>

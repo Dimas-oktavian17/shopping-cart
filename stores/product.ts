@@ -20,25 +20,6 @@ export const useProductStore = defineStore('products', () => {
         }
         return filteredProducts;
     });
-
-    // const ProdutsData = computed(() => {
-    //     let data = products.value.filter((item: any) => {
-    //         const SearchFilter = item.title.toLowerCase().includes(search.value.toLowerCase())
-    //         return SearchFilter
-    //     })
-
-    //     if (RadioFilter.value !== 'all') {
-    //         data.sort((a: any, b: any) => {
-    //             if (RadioFilter.value === 'descending') {
-    //                 b.price - a.price
-    //             } else {
-    //                 a.price - b.price
-    //             }
-    //         })
-    //     }
-    //     return data
-    // })
-
     const CartProducts = computed(() => {
         return cart.value.reduce((a: any, b: CartType) => {
             const FindProduct = a.find((i: CartType) => i.nama === b.nama)
@@ -54,7 +35,7 @@ export const useProductStore = defineStore('products', () => {
     const TotalCart = computed((): number => CartProducts.value.reduce((a: number, b: CartType) => a + b.harga, 0))
     // ? actions 
     const fetch = async () => {
-        const { data } = await useFetch('/api/product')
+        const { data } = await useFetch(`https://api.escuelajs.co/api/v1/products`)
         products.value = data.value
     }
     const DisableProduct = (ProductMenu: product, CartMenu: CartType) => {
