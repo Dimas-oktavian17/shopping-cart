@@ -2,7 +2,7 @@
 const useProductStores = useProductStore()
 const { CartProducts } = storeToRefs(useProductStores)
 const HandleDeleteProduct = (nama, harga, jumlah) => useProductStores.HandleDeleteProducts(nama, harga, jumlah)
-const HandleProduct = (nama, jumlah, harga, statusCart) => useProductStores.HandleProductsCarts(nama, jumlah, harga, statusCart)
+const HandleProduct = (nama, jumlah, harga) => useProductStores.HandleProductsCarts(nama, jumlah, harga)
 const img = useImage()
 </script>
 <template>
@@ -16,13 +16,14 @@ const img = useImage()
             harga,
             jumlah,
             logoIcon,
-            statusCart
         }, index) in CartProducts" :key="index">
             <div
                 class="container flex flex-row items-center justify-center w-full gap-6 pb-8 mb-4 bg-white rounded-lg shadow-lg">
                 <div class="flex flex-row items-start w-1/2 pl-8">
                     <figure class="">
-                        <Icon :name="logoIcon" class="text-black rounded-full size-[77px] bg-secondaryImage" />
+                        <NuxtImg :src="logoIcon[0]" placeholder preload format="webp" quality="100"
+                            class="rounded-full size-20" />
+                        <!-- <Icon :="logoIcon" class="text-black rounded-full size-[77px] bg-secondaryImage" /> -->
                     </figure>
                     <article class="flex flex-col items-start pl-8">
                         <h1 class="text-lg font-semibold text-primary-title">{{ nama }}</h1>
@@ -40,7 +41,7 @@ const img = useImage()
                     <span class="p-3 text-lg font-semibold text-primary-title">
                         {{ jumlah }}
                     </span>
-                    <BaseButton :disabled="!statusCart" @actions="HandleProduct(nama, jumlah, harga, statusCart)"
+                    <BaseButton @actions="HandleProduct(nama, jumlah, harga)"
                         class="grid p-3 rounded-lg bg-secondary-button place-items-center">
                         <Icon name="ph:plus" class="text-secondary-second size-6" />
                     </BaseButton>

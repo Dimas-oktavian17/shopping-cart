@@ -3,7 +3,7 @@ export type CartType = {
     harga: number;
     jumlah: number;
     logoIcon: string;
-    statusCart: boolean
+    statusCart?: boolean
 }
 export type product = {
     id: number

@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   ssr: true,
   devtools: { enabled: true },
   modules: [
+    '@vueuse/nuxt',
     '@nuxtjs/color-mode',
     'nuxt-icon',
     '@vueuse/nuxt',
